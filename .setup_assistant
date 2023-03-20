@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: str1ker
+    relative_path: description/robot.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/str1ker.srdf
+  CONFIG:
+    author_name: Val Novytskyy
+    author_email: valeriy.novytskyy@outlook.com
+    generated_timestamp: 1679297632

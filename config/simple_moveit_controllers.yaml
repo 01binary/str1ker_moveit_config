@@ -1,0 +1,19 @@
+controller_list:
+  - name: arm_velocity_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - mount
+      - shoulder
+      - elbow
+      - wrist
+  - name: arm_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - mount
+      - shoulder
+      - elbow
+      - wrist
