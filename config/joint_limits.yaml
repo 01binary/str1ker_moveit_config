@@ -13,6 +13,11 @@ joint_limits:
     max_velocity: 1
     has_acceleration_limits: false
     max_acceleration: 0
+  forearm_actuator:
+    has_velocity_limits: true
+    max_velocity: 0.0109982
+    has_acceleration_limits: false
+    max_acceleration: 0
   mount:
     has_velocity_limits: true
     max_velocity: 1
@@ -23,8 +28,8 @@ joint_limits:
     max_velocity: 1
     has_acceleration_limits: false
     max_acceleration: 0
-  wrist:
+  upperarm_actuator:
     has_velocity_limits: true
-    max_velocity: 1
+    max_velocity: 0.0508
     has_acceleration_limits: false
     max_acceleration: 0

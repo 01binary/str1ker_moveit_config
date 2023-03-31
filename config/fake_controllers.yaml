@@ -3,9 +3,8 @@ controller_list:
     type: $(arg fake_execution_type)
     joints:
       - mount
-      - shoulder
-      - elbow
-      - wrist
+      - forearm_actuator
+      - upperarm_actuator
 initial:  # Define initial robot poses per group
   - group: arm
-    pose: initial
+    pose: tuck
