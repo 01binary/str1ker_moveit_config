@@ -34,7 +34,7 @@
         <joint name="upperarm_actuator" value="-0.0005"/>
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="drumstick" parent_link="forearm_link" group="arm"/>
+    <end_effector name="drumstick" parent_link="forearm_link" group="effector"/>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="virtual_joint" type="fixed" parent_frame="world_frame" child_link="base_link"/>
     <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
