@@ -5,10 +5,6 @@ controller_list:
       - mount
       - forearm_actuator
       - upperarm_actuator
-  - name: fake_effector_controller
-    type: $(arg fake_execution_type)
-    joints:
-      []
 initial:  # Define initial robot poses per group
   - group: arm
     pose: tuck
