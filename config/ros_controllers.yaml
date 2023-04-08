@@ -2,16 +2,10 @@ arm_velocity_controller:
   type: velocity_controllers/JointTrajectoryController
   joints:
     - mount
-    - solenoid
     - forearm_actuator
     - upperarm_actuator
   gains:
     mount:
-      p: 100
-      d: 1
-      i: 1
-      i_clamp: 1
-    solenoid:
       p: 100
       d: 1
       i: 1

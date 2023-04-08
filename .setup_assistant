@@ -6,6 +6,6 @@ moveit_setup_assistant_config:
   SRDF:
     relative_path: config/str1ker.srdf
   CONFIG:
-    author_name: Val Novytskyy
+    author_name: Valeriy Novytskyy
     author_email: valeriy.novytskyy@outlook.com
-    generated_timestamp: 1680393356
+    generated_timestamp: 1680931626

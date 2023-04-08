@@ -5,6 +5,5 @@ controller_list:
     default: True
     joints:
       - mount
-      - solenoid
       - forearm_actuator
       - upperarm_actuator
