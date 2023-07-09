@@ -4,6 +4,6 @@ controller_list:
     type: FollowJointTrajectory
     default: True
     joints:
-      - mount
       - forearm_actuator
       - upperarm_actuator
+      - base

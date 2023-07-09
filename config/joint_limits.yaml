@@ -8,6 +8,11 @@ default_acceleration_scaling_factor: 0.1
 # Specific joint properties can be changed with the keys [max_position, min_position, max_velocity, max_acceleration]
 # Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
 joint_limits:
+  base:
+    has_velocity_limits: true
+    max_velocity: 1
+    has_acceleration_limits: false
+    max_acceleration: 0
   elbow:
     has_velocity_limits: true
     max_velocity: 1
@@ -19,11 +24,6 @@ joint_limits:
     has_acceleration_limits: false
     max_acceleration: 0
   forearm_actuator_mount:
-    has_velocity_limits: true
-    max_velocity: 1
-    has_acceleration_limits: false
-    max_acceleration: 0
-  mount:
     has_velocity_limits: true
     max_velocity: 1
     has_acceleration_limits: false

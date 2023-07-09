@@ -12,7 +12,7 @@
   <arg     if="$(arg info)" name="command_args" value="--debug" />
 
   <!-- move_group settings -->
-  <arg name="pipeline" default="str1ker" />
+  <arg name="pipeline" default="ompl" />
   <arg name="allow_trajectory_execution" default="true"/>
   <arg name="moveit_controller_manager" default="simple" />
   <arg name="fake_execution_type" default="interpolate"/>
@@ -45,11 +45,6 @@
 
   <!-- Planning Pipelines -->
   <group ns="move_group/planning_pipelines">
-
-    <!-- Str1ker -->
-    <include file="$(dirname)/planning_pipeline.launch.xml">
-      <arg name="pipeline" value="str1ker" />
-    </include>
 
     <!-- OMPL -->
     <include file="$(dirname)/planning_pipeline.launch.xml">
