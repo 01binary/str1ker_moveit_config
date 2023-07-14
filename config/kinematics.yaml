@@ -5,3 +5,5 @@ arm:
   goal_joint_tolerance: 0.1
   goal_position_tolerance: 0.1
   goal_orientation_tolerance: 0.1
+  positionOnly: true
+  debug: false
