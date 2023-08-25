@@ -20,7 +20,6 @@
         <joint name="elbow"/>
         <joint name="forearm_actuator_mount"/>
         <joint name="upperarm_actuator_mount"/>
-        <joint name="wrist"/>
         <joint name="base"/>
         <chain base_link="base_link" tip_link="tip_link"/>
     </group>
@@ -32,26 +31,22 @@
         <joint name="base" value="0"/>
         <joint name="forearm_actuator" value="-0.0508"/>
         <joint name="upperarm_actuator" value="-0.054"/>
-        <joint name="wrist" value="0.959931"/>
     </group_state>
     <group_state name="untuck" group="arm">
         <joint name="base" value="0"/>
         <joint name="forearm_actuator" value="-0.0279"/>
         <joint name="upperarm_actuator" value="-0.0239"/>
-        <joint name="wrist" value="0.959931"/>
     </group_state>
     <group_state name="max" group="arm">
         <joint name="base" value="0"/>
         <joint name="forearm_actuator" value="0"/>
         <joint name="upperarm_actuator" value="-0.0005"/>
-        <joint name="wrist" value="0.959931"/>
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="tip" parent_link="tip_link" group="arm"/>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="world" type="fixed" parent_frame="world" child_link="base_link"/>
     <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
-    <passive_joint name="forearm_actuator_connector"/>
     <passive_joint name="solenoid_mount"/>
     <passive_joint name="solenoid"/>
     <passive_joint name="wrist"/>
