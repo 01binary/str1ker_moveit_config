@@ -28,13 +28,22 @@
     output="screen"
   />
 
-  <!-- Load joint state controller -->
-  <rosparam file="$(find str1ker_moveit_config)/config/gazebo_controllers.yaml" />
+  <!-- Load joint state configuration -->
+  <rosparam
+    file="$(find str1ker_moveit_config)/config/gazebo_controllers.yaml"
+  />
   
-  <!-- Load joint velocity controller -->
-  <rosparam file="$(find str1ker_moveit_config)/config/ros_controllers.yaml" command="load"/>
+  <!-- Load joint velocity configuration -->
+  <rosparam
+    file="$(find str1ker_moveit_config)/config/ros_controllers.yaml"
+  />
 
-  <!-- Start gazebo controllers -->
+  <!-- Load solenoid configuration-->
+  <rosparam
+    file="$(find str1ker)/config/solenoids.yaml"
+  />
+
+  <!-- Start joint simulation controller -->
   <node
     name="controller_spawner"
     pkg="controller_manager"
@@ -42,6 +51,14 @@
     respawn="false"
     output="screen"
     args="joint_state_controller arm_velocity_controller"
+  />
+
+  <!-- Start simulation simulation controller -->
+  <node
+    name="solenoid_state_publisher"
+    type="solenoid_state_publisher"
+    pkg="str1ker"
+    output="screen"
   />
 
   <!-- Start transform publisher -->
