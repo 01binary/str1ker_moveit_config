@@ -53,7 +53,7 @@
     args="joint_state_controller arm_velocity_controller"
   />
 
-  <!-- Start simulation simulation controller -->
+  <!-- Start solenoid simulation controller -->
   <node
     name="solenoid_state_publisher"
     type="solenoid_state_publisher"
