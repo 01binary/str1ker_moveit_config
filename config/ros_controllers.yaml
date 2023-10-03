@@ -6,6 +6,11 @@ arm_velocity_controller:
     - base
     - upperarm_actuator
     - forearm_actuator
+  constraints:
+    stopped_velocity_tolerance: 0.1
+    upperarm_actuator:
+      goal: 0.1
+      trajectory: 0.1
   gains:
     base:
       p: 10.0
