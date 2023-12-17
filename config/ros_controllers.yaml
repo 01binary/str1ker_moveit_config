@@ -8,15 +8,21 @@ arm_velocity_controller:
     - forearm_actuator
   constraints:
     stopped_velocity_tolerance: 0.1
+    base:
+      goal: 0.3
+      trajectory: 0.3
     upperarm_actuator:
+      goal: 0.1
+      trajectory: 0.1
+    forearm_actuator:
       goal: 0.1
       trajectory: 0.1
   gains:
     base:
-      p: 10.0
-      i: 0.1
-      d: 0.1
-      i_clamp: 1
+      p: 0.8678
+      i: 0.0119
+      d: 0.0
+      i_clamp: 1.0
     upperarm_actuator:
       p: 10.0
       i: 0.01
