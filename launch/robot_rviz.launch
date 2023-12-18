@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Launch Robot -->
+  <include file="$(find str1ker)/launch/robot.launch" pass_all_args="true"/>
+
+  <!-- Launch Viz -->
+  <include file="$(dirname)/demo.launch" pass_all_args="true">
+    <arg name="load_robot_description" value="false" />
+    <arg name="moveit_controller_manager" value="ros_control" />
+  </include>
+</launch>
