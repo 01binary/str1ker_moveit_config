@@ -38,11 +38,6 @@
     file="$(find str1ker_moveit_config)/config/ros_controllers.yaml"
   />
 
-  <!-- Load solenoid configuration-->
-  <rosparam
-    file="$(find str1ker)/config/solenoids.yaml"
-  />
-
   <!-- Start joint simulation controller -->
   <node
     name="controller_spawner"
@@ -51,14 +46,6 @@
     respawn="false"
     output="screen"
     args="joint_state_controller arm_velocity_controller"
-  />
-
-  <!-- Start solenoid simulation controller -->
-  <node
-    name="solenoid_state_publisher"
-    type="solenoid_state_publisher"
-    pkg="str1ker"
-    output="screen"
   />
 
   <!-- Start transform publisher -->
