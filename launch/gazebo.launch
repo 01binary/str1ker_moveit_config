@@ -28,12 +28,12 @@
     output="screen"
   />
   
-   <!-- Load joint velocity configuration -->
+   <!-- Load joint state and velocity configuration -->
   <rosparam
     file="$(find str1ker_moveit_config)/config/ros_controllers.yaml"
   />
 
-  <!-- Start joint simulation controller -->
+  <!-- Start joint simulation controllers -->
   <node
     name="controller_spawner"
     pkg="controller_manager"
