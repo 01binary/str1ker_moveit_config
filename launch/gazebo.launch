@@ -27,13 +27,8 @@
     respawn="false"
     output="screen"
   />
-
-  <!-- Load joint state configuration -->
-  <rosparam
-    file="$(find str1ker_moveit_config)/config/gazebo_controllers.yaml"
-  />
   
-  <!-- Load joint velocity configuration -->
+   <!-- Load joint velocity configuration -->
   <rosparam
     file="$(find str1ker_moveit_config)/config/ros_controllers.yaml"
   />
