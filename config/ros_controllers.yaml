@@ -3,9 +3,8 @@ joint_state_controller:
   publish_rate: 50
 
 arm_velocity_controller:
-  type: velocity_controllers/JointTrajectoryController
+  type: str1ker/trajectoryController
   publish_rate: 50
-  allow_partial_joints_goal: true
   joints:
     - base
     - upperarm_actuator
