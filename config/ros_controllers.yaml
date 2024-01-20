@@ -5,6 +5,7 @@ joint_state_controller:
 arm_velocity_controller:
   type: str1ker/trajectoryController
   publish_rate: 50
+  debug: true
   joints:
     - base
     - upperarm_actuator
@@ -12,14 +13,17 @@ arm_velocity_controller:
   constraints:
     stopped_velocity_tolerance: 0.1
     base:
-      goal: 0.9
-      trajectory: 0.9
+      goal: 0.01
+      trajectory: 0.01
+      time: 10.0
     upperarm_actuator:
-      goal: 0.1
-      trajectory: 0.1
+      goal: 0.01
+      trajectory: 0.01
+      time: 10.0
     forearm_actuator:
-      goal: 0.1
-      trajectory: 0.1
+      goal: 0.01
+      trajectory: 0.01
+      time: 10.0
   gains:
     base:
       p: 0.4079
@@ -30,9 +34,9 @@ arm_velocity_controller:
       p: 3.149
       i: 4.687
       d: 0.03102
-      i_clamp: 1
+      i_clamp: 1.0
     forearm_actuator:
       p: 31.12
       i: 10.22
       d: 0.3102
-      i_clamp: 1
+      i_clamp: 1.0
