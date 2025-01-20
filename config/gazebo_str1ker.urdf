@@ -140,7 +140,7 @@
                 <diffuse>0 0 0 0</diffuse>
             </material>
         </visual>
-        <plugin name="gazebo_ros_control">
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
             <robotNamespace>/</robotNamespace>
         </plugin>
     </gazebo>
@@ -301,17 +301,17 @@
     </link>
     <!-- Joints -->
     <joint name="fixed" type="fixed">
-        <origin rpy="0 0 0" xyz="0 0 0" />
+        <origin rpy="0 0 0" xyz="0 0 0.5" />
         <parent link="world" />
         <child link="base_link" />
     </joint>
     <joint name="base" type="revolute">
-        <origin rpy="1.5708 0 0" xyz="0 0 0.069" />
+        <origin rpy="1.5708 0 0" xyz="0 0 0" />
         <axis xyz="0 1 0" />
         <parent link="base_link" />
         <child link="shoulder_link" />
-        <limit effort="100" velocity="1.0" lower="-1.4929" upper="1.4929" />
-        <dynamics damping="0.7" friction="1.4" />
+        <limit effort="100" velocity="3.14160" lower="-1.5708" upper="1.5708" />
+        <dynamics damping="5" friction="5" />
     </joint>
     <joint name="shoulder" type="revolute">
         <origin rpy="0 0 0" xyz="-0.013 0.11518 0.0" />
@@ -336,8 +336,9 @@
         <axis xyz="0 0 1" />
         <parent link="forearm_link" />
         <child link="drumstick_link" />
-        <limit effort="100" velocity="1.0" lower="0.959931" upper="0.959931" />
+        <limit effort="100" velocity="1.0" lower="0.959931" upper="1.0" />
         <dynamics damping="0.7" friction="1.4" />
+        <mimic joint="solenoid" multiplier="13.8167" offset="0.9862" />
     </joint>
     <joint name="tip" type="fixed">
         <origin rpy="0 0 0" xyz="0.305 0.0 0.0" />
@@ -388,7 +389,7 @@
         <dynamics damping="0.7" friction="1.4" />
         <mimic joint="forearm_actuator" multiplier="0.604330709" offset="1.5444" />
     </joint>
-    <joint name="solenoid_mount" type="revolute">
+    <joint name="solenoid_mount" type="fixed">
         <origin rpy="0 0 0" xyz="0.355 -0.031 0.013" />
         <axis xyz="0 0 1" />
         <parent link="forearm_link" />
@@ -398,7 +399,7 @@
     </joint>
     <joint name="solenoid" type="prismatic">
         <origin rpy="0 0 0" xyz="0 0 0" />
-        <axis xyz="0 0 1" />
+        <axis xyz="1 0 0" />
         <parent link="solenoid_mount_link" />
         <child link="solenoid_shaft_link" />
         <limit effort="100" velocity="1.0" lower="-0.0019" upper="0.001" />
@@ -412,7 +413,7 @@
         </joint>
         <actuator name="base_motor">
             <mechanicalReduction>1</mechanicalReduction>
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </actuator>
     </transmission>
     <transmission name="trans_shoulder">
@@ -422,7 +423,7 @@
         </joint>
         <actuator name="shoulder_motor">
             <mechanicalReduction>1</mechanicalReduction>
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </actuator>
     </transmission>
     <transmission name="trans_elbow">
@@ -432,7 +433,18 @@
         </joint>
         <actuator name="elbow_motor">
             <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+    <!-- Required to avoid "the complete state of the robot is not yet known" warnings in Gazebo -->
+    <transmission name="trans_solenoid">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="solenoid">
             <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="solenoid">
+            <mechanicalReduction>1</mechanicalReduction>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </actuator>
     </transmission>
     <!-- Arm controllers-->
@@ -467,12 +479,6 @@
             <multiplier>-3.0</multiplier>
             <offset>-0.15</offset>
         </plugin>
-        <plugin name="wrist_joint_plugin" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
-            <joint>solenoid</joint>
-            <mimicJoint>wrist</mimicJoint>
-            <multiplier>13.8167</multiplier>
-            <offset>0.9862</offset>
-        </plugin>
     </gazebo>
     <transmission name="trans_shoulder">
         <type>transmission_interface/SimpleTransmission</type>
@@ -490,6 +496,16 @@
             <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </joint>
         <actuator name="elbow_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_wrist">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="wrist">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="wrist_motor">
             <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             <mechanicalReduction>1</mechanicalReduction>
         </actuator>

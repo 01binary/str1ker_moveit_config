@@ -12,7 +12,7 @@
   <arg     if="$(arg info)" name="command_args" value="--debug" />
 
   <!-- move_group settings -->
-  <arg name="pipeline" default="str1ker" />
+  <arg name="pipeline" default="ompl" />
   <arg name="allow_trajectory_execution" default="true"/>
   <arg name="moveit_controller_manager" default="simple" />
   <arg name="fake_execution_type" default="interpolate"/>
@@ -45,9 +45,26 @@
 
   <!-- Planning Pipelines -->
   <group ns="move_group/planning_pipelines">
-    <!-- Support custom planning pipeline -->
+
+    <!-- OMPL -->
     <include file="$(dirname)/planning_pipeline.launch.xml">
-      <arg name="pipeline" value="str1ker" />
+      <arg name="pipeline" value="ompl" />
+    </include>
+
+    <!-- CHOMP -->
+    <include file="$(dirname)/planning_pipeline.launch.xml">
+      <arg name="pipeline" value="chomp" />
+    </include>
+
+    <!-- Pilz Industrial Motion -->
+    <include file="$(dirname)/planning_pipeline.launch.xml">
+      <arg name="pipeline" value="pilz_industrial_motion_planner" />
+    </include>
+
+    <!-- Support custom planning pipeline -->
+    <include if="$(eval arg('pipeline') not in ['ompl', 'chomp', 'pilz_industrial_motion_planner'])"
+             file="$(dirname)/planning_pipeline.launch.xml">
+      <arg name="pipeline" value="$(arg pipeline)" />
     </include>
   </group>
 
@@ -70,7 +87,7 @@
 
     <param name="allow_trajectory_execution" value="$(arg allow_trajectory_execution)"/>
     <param name="sense_for_plan/max_safe_path_cost" value="$(arg max_safe_path_cost)"/>
-    <param name="default_planning_pipeline" value="str1ker" />
+    <param name="default_planning_pipeline" value="$(arg pipeline)" />
     <param name="capabilities" value="$(arg capabilities)" />
     <param name="disable_capabilities" value="$(arg disable_capabilities)" />
 

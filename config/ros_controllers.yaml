@@ -1,15 +1,9 @@
-joint_state_controller:
-  type: joint_state_controller/JointStateController
-  publish_rate: 50
-
-arm_velocity_controller:
-  type: str1ker/jointTrajectoryController
-  publish_rate: 50
-  debug: true
+arm_position_controller:
+  type: position_controllers/JointTrajectoryController
   joints:
     - base
-    - upperarm_actuator
     - forearm_actuator
+    - upperarm_actuator
   constraints:
     base:
       goal: 0.01
@@ -28,14 +22,14 @@ arm_velocity_controller:
       p: 0.4079
       i: 0.05242
       d: 0.1964
-      i_clamp: 1.0
-    upperarm_actuator:
-      p: 3.149
-      i: 4.687
-      d: 0.03102
-      i_clamp: 1.0
+      i_clamp: 1
     forearm_actuator:
       p: 31.12
       i: 10.22
       d: 0.3102
-      i_clamp: 1.0
+      i_clamp: 1
+    upperarm_actuator:
+      p: 3.149
+      i: 4.687
+      d: 0.03102
+      i_clamp: 1
