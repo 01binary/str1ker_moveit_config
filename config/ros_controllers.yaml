@@ -2,18 +2,18 @@ arm_position_controller:
   type: position_controllers/JointTrajectoryController
   joints:
     - base
-    - forearm_actuator
-    - upperarm_actuator
+    - shoulder
+    - elbow
   constraints:
     base:
       goal: 0.01
       trajectory: 0.01
       time: 10.0
-    upperarm_actuator:
+    shoulder:
       goal: 0.01
       trajectory: 0.01
       time: 10.0
-    forearm_actuator:
+    elbow:
       goal: 0.01
       trajectory: 0.01
       time: 10.0
@@ -23,13 +23,13 @@ arm_position_controller:
       i: 0.05242
       d: 0.1964
       i_clamp: 1
-    forearm_actuator:
-      p: 31.12
-      i: 10.22
-      d: 0.3102
-      i_clamp: 1
-    upperarm_actuator:
+    shoulder:
       p: 3.149
       i: 4.687
       d: 0.03102
+      i_clamp: 1
+    elbow:
+      p: 31.12
+      i: 10.22
+      d: 0.3102
       i_clamp: 1

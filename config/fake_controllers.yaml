@@ -3,8 +3,8 @@ controller_list:
     type: $(arg fake_execution_type)
     joints:
       - base
-      - forearm_actuator
-      - upperarm_actuator
+      - shoulder
+      - elbow
   - name: fake_effector_controller
     type: $(arg fake_execution_type)
     joints:

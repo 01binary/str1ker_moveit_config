@@ -5,8 +5,8 @@ controller_list:
     default: True
     joints:
       - base
-      - forearm_actuator
-      - upperarm_actuator
+      - shoulder
+      - elbow
   - name: arm_gripper_controller
     action_ns: gripper_action
     type: GripperCommand

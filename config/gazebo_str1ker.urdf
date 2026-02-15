@@ -406,30 +406,30 @@
         <dynamics damping="0.7" friction="1.4" />
     </joint>
     <!-- Transmissions -->
-    <transmission name="trans_base">
+    <transmission name="trans_base_position">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="base">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="base_motor">
             <mechanicalReduction>1</mechanicalReduction>
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </actuator>
     </transmission>
-    <transmission name="trans_shoulder">
+    <transmission name="trans_shoulder_position">
         <type>transmission_interface/SimpleTransmission</type>
-        <joint name="upperarm_actuator">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        <joint name="shoulder">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="shoulder_motor">
             <mechanicalReduction>1</mechanicalReduction>
             <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </actuator>
     </transmission>
-    <transmission name="trans_elbow">
+    <transmission name="trans_elbow_position">
         <type>transmission_interface/SimpleTransmission</type>
-        <joint name="forearm_actuator">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        <joint name="elbow">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="elbow_motor">
             <mechanicalReduction>1</mechanicalReduction>
@@ -437,10 +437,10 @@
         </actuator>
     </transmission>
     <!-- Required to avoid "the complete state of the robot is not yet known" warnings in Gazebo -->
-    <transmission name="trans_solenoid">
+    <transmission name="trans_solenoid_position">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="solenoid">
-            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="solenoid">
             <mechanicalReduction>1</mechanicalReduction>
